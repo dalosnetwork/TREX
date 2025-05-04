@@ -1,2 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Press+Start+2P&display=swap");
+$white: #FCFCFC;
+$black: #0C0C0C;
+$red: #B35E5E;
+$blue1: #D0D7FF;
+$blue2: #3A63B2;
+$blue3: #20207D;
+$blue4: #030C2D;
 
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Martian Mono";
+  color: $white;
+}
+
+#main{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./assets/bg.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+nav{
+    position: relative;
+}
+
+.button1{
+  
+}
