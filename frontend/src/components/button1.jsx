@@ -6,7 +6,7 @@ const Button1 = ({ onClick, label, className, iconName, img, imgClass, style, id
     <button id={id} className={`button1 ${className}`} onClick={onClick} style={{position:"relative"}}>
       <div className='outer' style={style}>
         {iconName ? (
-          <Icon name={iconName} className={`placeholder my-auto me-2 ${imgClass}`} />
+          <Icon name={iconName} className={`placeholder my-auto ${imgClass}`} />
         ) : img ? (
           <img src={img} className={`placeholder my-auto me-2 ${imgClass}`} style={{height:"24px"}} alt="" />
         ) : null}

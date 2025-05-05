@@ -2,6 +2,7 @@
 $white: #fcfcfc;
 $black: #0c0c0c;
 $red: #b35e5e;
+$blue: #2040ED;
 $blue1: #d0d7ff;
 $blue2: #3a63b2;
 $blue3: #20207d;
@@ -17,7 +18,11 @@ $blue4: #030c2d;
 #main {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  overflow-y: visible;
   background-image: url("./assets/bg.svg");
   background-position: left;
   background-size: cover;
@@ -94,53 +99,98 @@ nav {
   background: var(--Blue4, #030c2d);
 }
 
-
 .button1 {
   position: relative;
   border: none;
   background-color: transparent;
-  .outer{
+  filter: drop-shadow(0px 5px 2px rgba(0, 0, 0, 0.45));
+  .outer {
     width: 100%;
-    height: 100%;         // establish stacking context
+    height: 100%; 
     z-index: 2;
     position: relative;
     background-color: $blue2;
     color: $white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 16px 34px 11px 34px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--Brand_White, #fcfcfc);
+    text-align: center;
+    font-family: "Press Start 2P";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      right: 6px;
+      height: 2px;
+      background: $blue1;
+      border-radius: 1px;
+      z-index: 3;
+    }
   }
   .inner {
     position: absolute;
     top: 5px;
     left: 0;
-    width:  100%;
+    width: 100%;
     height: 100%;
-    background-color: #b35e5e;
-    border-radius: 6px;
-    z-index: 1;            // 🡸 puts it below the button’s background
+    background-color: $blue3;
+    border-radius: 3px;
+    z-index: 1;
+    box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  &:active{
-    .inner{
-      width: 100%;
-      height: 100%;         // establish stacking context
-      z-index: 2;
-      position: relative;
-      background-color: $blue2;
-      color: $white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
+  &:hover{
+    .inner {
+      background-color: $blue3;
     }
     .outer {
-      position: absolute;
-      top: 5px;
-      left: 0;
-      width:  100%;
-      height: 100%;
-      background-color: #b35e5e;
-      border-radius: 6px;
-      z-index: 1;            // 🡸 puts it below the button’s background
-    } 
+      background-color: $blue;
+      color: $black;
+    }
+    &.swap{
+      .outer {
+        padding: 16px;
+        svg{
+          path{
+            stroke: $black;
+          }
+        }
+      }
+    }
   }
+  &:active {
+    .inner {
+      top: 0px;
+      background-color: $blue4;
+    }
+    .outer {
+      top: 5px;
+      background-color: $blue3;
+      &::before {
+        display: none;
+      }
+    }
+  }
+  &.swap{
+    .outer {
+      padding: 16px;
+      svg{
+        path{
+        }
+      }
+    }
+  }
+}
+
+
+footer{
+  margin-top: 48px;
+  margin-bottom: 40px;
 }
