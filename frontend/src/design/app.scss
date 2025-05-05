@@ -95,48 +95,52 @@ nav {
 }
 
 
-$btn-bg            : #4a6cf7;
-$btn-shadow-layer  : #2e3bb3;
-$btn-border        : #1e2a8f;
-$btn-radius        : 6px;
-$btn-offset        : 4px;  // how far “down” the shadow layer sits
-
-.retro-btn {
+.button1 {
   position: relative;
-  display: inline-block;
-  padding: 10px 24px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: white;
-  background-color: $btn-bg;
-  border: 2px solid $btn-border;
-  border-radius: $btn-radius;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.08s ease;
-  
-  // ensure the pseudo sits behind everything
-  &::before {
-    content: '';
+  border: none;
+  background-color: transparent;
+  .outer{
+    width: 100%;
+    height: 100%;         // establish stacking context
+    z-index: 2;
+    position: relative;
+    background-color: $blue2;
+    color: $white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  .inner {
     position: absolute;
-    top:    $btn-offset;
-    left:   0;
+    top: 5px;
+    left: 0;
     width:  100%;
     height: 100%;
-    box-sizing: border-box;           // ← include its border _inside_ that 100%
-    background-color: $btn-shadow-layer;
-    border: 2px solid $btn-border;
-    border-radius: $btn-radius;
-    transition: transform 0.08s ease;
-    z-index: -1;                       // ← behind the button’s text
+    background-color: #b35e5e;
+    border-radius: 6px;
+    z-index: 1;            // 🡸 puts it below the button’s background
   }
-
-  &:active {
-    transform: translateY($btn-offset);
-
-    &::before {
-      transform: translateY(-$btn-offset);
+  &:active{
+    .inner{
+      width: 100%;
+      height: 100%;         // establish stacking context
+      z-index: 2;
+      position: relative;
+      background-color: $blue2;
+      color: $white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
     }
+    .outer {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width:  100%;
+      height: 100%;
+      background-color: #b35e5e;
+      border-radius: 6px;
+      z-index: 1;            // 🡸 puts it below the button’s background
+    } 
   }
 }

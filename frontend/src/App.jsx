@@ -57,7 +57,7 @@ function App() {
               </div>
               <div className="col-6 my-auto  d-flex justify-content-end">
                 <Button1
-                  onClick={undefined}
+                  onClick={}
                   label={"Connect Wallet"}
                   className={"retro-btn"}
                   iconName={undefined}
