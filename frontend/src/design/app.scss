@@ -1,14 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Press+Start+2P&display=swap");
-$white: #FCFCFC;
-$black: #0C0C0C;
-$red: #B35E5E;
-$blue1: #D0D7FF;
-$blue2: #3A63B2;
-$blue3: #20207D;
-$blue4: #030C2D;
-
-
-
+$white: #fcfcfc;
+$black: #0c0c0c;
+$red: #b35e5e;
+$blue1: #d0d7ff;
+$blue2: #3a63b2;
+$blue3: #20207d;
+$blue4: #030c2d;
 
 * {
   margin: 0;
@@ -17,19 +14,129 @@ $blue4: #030C2D;
   color: $white;
 }
 
-#main{
-    height: 100vh;
-    width: 100vw;
-    background-image: url("./assets/bg.svg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+#main {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: url("./assets/bg.svg");
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-nav{
-    position: relative;
+nav {
+  position: relative;
+  padding: 32px 0;
 }
 
-.button1{
+::selection {
+  background-color: $white;
+  color: $blue4;
+}
+
+.title1 {
+  color: $blue4;
+  font-family: "Press Start 2P";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  &::selection {
+    background-color: $blue4;
+    color: $white;
+  }
+}
+
+.title2 {
+  color: $white;
+  font-family: "Press Start 2P";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text1 {
+  color: $white;
+  font-family: "Martian Mono";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text2 {
+  color: $white;
+  font-family: "Martian Mono";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.textRed {
+  color: var(--Red, #b35e5e);
+  font-family: "Martian Mono";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.button1 {
+}
+
+.swapWrapper {
+  width: 540px;
+  padding: 24px 32px;
+  border-radius: 6px;
+  border: 1px solid var(--Brand_White, #fcfcfc);
+  background: var(--Blue4, #030c2d);
+}
+
+
+$btn-bg            : #4a6cf7;
+$btn-shadow-layer  : #2e3bb3;
+$btn-border        : #1e2a8f;
+$btn-radius        : 6px;
+$btn-offset        : 4px;  // how far “down” the shadow layer sits
+
+.retro-btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 24px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white;
+  background-color: $btn-bg;
+  border: 2px solid $btn-border;
+  border-radius: $btn-radius;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.08s ease;
   
+  // ensure the pseudo sits behind everything
+  &::before {
+    content: '';
+    position: absolute;
+    top:    $btn-offset;
+    left:   0;
+    width:  100%;
+    height: 100%;
+    box-sizing: border-box;           // ← include its border _inside_ that 100%
+    background-color: $btn-shadow-layer;
+    border: 2px solid $btn-border;
+    border-radius: $btn-radius;
+    transition: transform 0.08s ease;
+    z-index: -1;                       // ← behind the button’s text
+  }
+
+  &:active {
+    transform: translateY($btn-offset);
+
+    &::before {
+      transform: translateY(-$btn-offset);
+    }
+  }
 }
