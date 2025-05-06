@@ -4,13 +4,18 @@ import logo from "./design/assets/logo.png";
 import Button1 from "./components/button1";
 import React from "react";
 import Icon from "./components/iconManager";
-import dalos from "./design/assets/dalos_logotype_yatay_açıkrenkli 1.svg"
+import dalos from "./design/assets/dalos_logotype_yatay_açıkrenkli 1.svg";
 
 function App() {
-  const [fromToken, setFromToken] = useState({ name: "" });
-  const [toToken, setToToken] = useState({ name: "" });
-  const [amount, setAmount] = useState();
-  const tokens = [{ name: "ETH", address: "qweqwe", img: "idk" }];
+  const [fromToken, setFromToken] = useState({ name: "ETH" });
+  const [toToken, setToToken] = useState({ name: "ETH" });
+  const [amount, setAmount] = useState("");
+  const tokens = [
+    { name: "ETH", address: "qweqwe", img: "idk" },
+    { name: "USDC", address: "qweqwe", img: "idk" },
+    { name: "USDT", address: "qweqwe", img: "idk" },
+    { name: "BASE", address: "qweqwe", img: "idk" },
+  ];
 
   return (
     <>
@@ -96,15 +101,20 @@ function App() {
                               {fromToken.name}
                             </button>
                             <ul className="dropdown-menu">
+                              <li className="dropdown-item">
+                                <input type="text" placeholder="Search" />
+                              </li>
                               {tokens.map((token, index) => (
-                                <li
-                                  key={index}
-                                  onClick={() => setFromToken(token)}
-                                >
-                                  <span className="dropdown-item">
-                                    {token.name}
-                                  </span>
-                                </li>
+                                <>
+                                  <li
+                                    key={index}
+                                    onClick={() => setFromToken(token)}
+                                  >
+                                    <span className="dropdown-item">
+                                      {token.name}
+                                    </span>
+                                  </li>
+                                </>
                               ))}
                             </ul>
                           </div>
@@ -122,8 +132,65 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-12 mb-3">
-                      <div className="percetage">yüzdeler</div>
+                    <div className="col-12 mb-3 d-flex justify-content-center">
+                      <div className="row w-100">
+                        <div className="col p-0">
+                          <Button1
+                            onClick={() => setAmount("25%")}
+                            label={"25%"}
+                            className={`percentage first ${
+                              amount === "25%" && "active"
+                            }`}
+                            iconName={undefined}
+                            img={undefined}
+                            imgClass={undefined}
+                            style={undefined}
+                            id={undefined}
+                          />
+                        </div>
+                        <div className="col p-0">
+                          <Button1
+                            onClick={() => setAmount("50%")}
+                            label={"50%"}
+                            className={`percentage ${
+                              amount === "50%" && "active"
+                            }`}
+                            iconName={undefined}
+                            img={undefined}
+                            imgClass={undefined}
+                            style={undefined}
+                            id={undefined}
+                          />
+                        </div>
+                        <div className="col p-0">
+                          <Button1
+                            onClick={() => setAmount("75%")}
+                            label={"75%"}
+                            className={`percentage ${
+                              amount === "75%" && "active"
+                            }`}
+                            iconName={undefined}
+                            img={undefined}
+                            imgClass={undefined}
+                            style={undefined}
+                            id={undefined}
+                          />
+                        </div>
+                        <div className="col p-0">
+                          <Button1
+                            onClick={() => setAmount("100%")}
+                            label={"100%"}
+                            className={`percentage last ${
+                              amount === "100%" && "active"
+                            }`}
+                            iconName={undefined}
+                            img={undefined}
+                            imgClass={undefined}
+                            style={undefined}
+                            id={undefined}
+                          />
+                        </div>
+                      </div>
                     </div>
                     <div className="col-12 d-flex justify-content-center">
                       <Button1
@@ -151,7 +218,10 @@ function App() {
                             </button>
                             <ul className="dropdown-menu">
                               {tokens.map((token, index) => (
-                                <li key={index} onClick={() => setToToken(token)}>
+                                <li
+                                  key={index}
+                                  onClick={() => setToToken(token)}
+                                >
                                   <a className="dropdown-item" href="#">
                                     {token.name}
                                   </a>
@@ -169,7 +239,7 @@ function App() {
                       <div className="row">
                         <div className="col-6 my-auto text1">Balance:--</div>
                         <div className="col-6 my-auto d-flex justify-content-end text2">
-                          ~$20.95
+                          <span className="textRed me-2">(-.16%)</span> ~$20.95
                         </div>
                       </div>
                     </div>

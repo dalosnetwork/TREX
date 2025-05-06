@@ -2,7 +2,7 @@
 $white: #fcfcfc;
 $black: #0c0c0c;
 $red: #b35e5e;
-$blue: #2040ED;
+$blue: #2040ed;
 $blue1: #d0d7ff;
 $blue2: #3a63b2;
 $blue3: #20207d;
@@ -85,7 +85,7 @@ nav {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 2;
 }
 
 .button1 {
@@ -105,14 +105,14 @@ nav {
   background-color: transparent;
   filter: drop-shadow(0px 5px 2px rgba(0, 0, 0, 0.45));
   .outer {
-    width: 100%;
-    height: 100%; 
+    width: 318px;
+    height: 100%;
     z-index: 2;
     position: relative;
     background-color: $blue2;
     color: $white;
     border: none;
-    padding: 16px 34px 11px 34px;
+    padding: 16px 0 11px 0;
     border-radius: 3px;
     box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--Brand_White, #fcfcfc);
@@ -146,7 +146,7 @@ nav {
     z-index: 1;
     box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  &:hover{
+  &:hover {
     .inner {
       background-color: $blue3;
     }
@@ -154,11 +154,11 @@ nav {
       background-color: $blue;
       color: $black;
     }
-    &.swap{
+    &.swap {
       .outer {
         padding: 16px;
-        svg{
-          path{
+        svg {
+          path {
             stroke: $black;
           }
         }
@@ -178,19 +178,169 @@ nav {
       }
     }
   }
-  &.swap{
+  &.active {
+    .inner {
+      top: 0px;
+      background-color: $blue4 !important;
+    }
+    .outer {
+      top: 5px;
+      color: $white !important;
+      background-color: $blue3 !important;
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &.swap {
     .outer {
       padding: 16px;
-      svg{
-        path{
+      width: auto;
+      svg {
+        path {
         }
+      }
+    }
+  }
+  &.percentage {
+    width: 100%;
+    .outer {
+      width: 100%;
+      padding: 16px 0 10px 0;
+      background-color: $blue;
+      color: $white;
+      border-radius: 0px;
+      box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      color: var(--Blue4, #030c2d);
+      text-align: center;
+      font-family: "Press Start 2P";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        right: 3px;
+        height: 3px;
+        background: $blue1;
+        border-radius: 0px;
+        z-index: 3;
+      }
+    }
+    .inner {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $blue3;
+      border-radius: 0px;
+      z-index: 1;
+      box-shadow: inset 0 0 0 2px $black, inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    &:hover {
+      .inner {
+        background-color: $blue3;
+      }
+      .outer {
+        background-color: $blue2;
+        color: $white;
+      }
+    }
+    &:active {
+      .inner {
+        top: 0px;
+        background-color: $blue4;
+      }
+      .outer {
+        top: 5px;
+        background-color: $blue3;
+        &::before {
+          display: none;
+        }
+      }
+    }
+    &.first {
+      .inner {
+        border-radius: 4px 0px 0px 4px;
+      }
+      .outer {
+        border-radius: 4px 0px 0px 4px;
+      }
+    }
+    &.last {
+      .inner {
+        border-radius: 0px 4px 4px 0px;
+      }
+      .outer {
+        border-radius: 0px 4px 4px 0px;
       }
     }
   }
 }
 
+.dropdown {
+  .dropdown-toggle {
+    background-image: url("./assets/dropdown.svg");
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 153px;
+    height: 49px;
+    display: flex;
+    justify-content: start;
+    flex-shrink: 0;
+    color: var(--Brand_White, #fcfcfc);
+    font-family: "Press Start 2P";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2;
+    &:active {
+      box-shadow: none;
+    }
+  }
+  .dropdown-menu {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    li {
+      background-image: url("./assets/dropdown2.svg");
+      border: none;
+      outline: none;
+      box-shadow: none;
+      width: 153px;
+      height: 45px;
+      display: flex;
+      justify-content: start;
+      flex-shrink: 0;
+      cursor: pointer;
+      span{
+        color: var(--Brand_White, #fcfcfc);
+        font-family: "Press Start 2P";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 2;
+        &:hover{
+          background-color: transparent;
+        }
+      }
+      &:hover{
+        background-image: url("./assets/dropdown2.svg");
+      }
+    }
+  }
+}
 
-footer{
+footer {
   margin-top: 48px;
   margin-bottom: 40px;
 }
