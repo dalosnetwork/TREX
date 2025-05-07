@@ -76,6 +76,30 @@ nav {
   border: 1px solid var(--Brand_White, #fcfcfc);
   background: var(--Blue4, #030c2d); }
 
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1350px; } }
+@media (min-width: 1600px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1550px; } }
+@media (min-width: 1900px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 90vw; } }
 .button1 {
   position: relative;
   border: none;
@@ -227,6 +251,26 @@ nav {
   line-height: 2; }
   .dropdown .dropdown-toggle:active {
     box-shadow: none; }
+  .dropdown .dropdown-toggle::after {
+    content: "";
+    position: absolute;
+    background-image: url("./assets/dropdown3.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    top: 0;
+    right: 0;
+    margin: 0;
+    display: flex;
+    width: 30px;
+    height: 49px;
+    filter: drop-shadow(0px 7px 2px rgba(0, 0, 0, 0.45)); }
+  .dropdown .dropdown-toggle:hover::after {
+    background-image: url("./assets/dropdown4.svg"); }
+  .dropdown .dropdown-toggle.show::after {
+    background-image: url("./assets/dropdown5.svg"); }
 .dropdown .dropdown-menu {
   padding: 0;
   border-radius: 0;
@@ -234,31 +278,55 @@ nav {
   border: none;
   outline: none; }
   .dropdown .dropdown-menu .list {
+    width: 94%;
     max-height: 100px;
-    overflow-y: scroll; }
-  .dropdown .dropdown-menu input[type="text"] {
-    background-color: transparent;
-    width: 100%;
-    outline: none;
-    box-shadow: none;
-    border: none; }
-    .dropdown .dropdown-menu input[type="text"]:active {
-      background-color: transparent;
-      outline: none;
-      box-shadow: none;
-      border: none; }
+    overflow-y: scroll;
+    overflow-x: hidden; }
+    .dropdown .dropdown-menu .list::-webkit-scrollbar {
+      width: 10px; }
+    .dropdown .dropdown-menu .list::-webkit-scrollbar-track {
+      background: #030c2d;
+      border-radius: 0px; }
+    .dropdown .dropdown-menu .list::-webkit-scrollbar-thumb {
+      background: #2040ed;
+      border-radius: 0px; }
   .dropdown .dropdown-menu li {
     background-image: url("./assets/dropdown2.svg");
     border: none;
     outline: none;
     box-shadow: none;
-    padding: 16px 8px 0 8px !important;
+    padding: 13px 8px 0 8px !important;
     width: 153px;
     height: 45px;
     display: flex;
     justify-content: start;
     flex-shrink: 0;
     cursor: pointer; }
+    .dropdown .dropdown-menu li.search {
+      padding: 8px 8px 0 8px !important;
+      display: flex;
+      align-items: center; }
+      .dropdown .dropdown-menu li.search input[type="text"] {
+        background-color: transparent;
+        width: 100%;
+        height: auto;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        color: var(--Brand_White, #fcfcfc);
+        font-family: "Press Start 2P";
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 2;
+        text-transform: uppercase; }
+        .dropdown .dropdown-menu li.search input[type="text"]:active {
+          background-color: transparent;
+          outline: none;
+          box-shadow: none;
+          border: none; }
+        .dropdown .dropdown-menu li.search input[type="text"]::placeholder {
+          color: #fcfcfc; }
     .dropdown .dropdown-menu li span {
       color: var(--Brand_White, #fcfcfc);
       font-family: "Press Start 2P";
@@ -280,25 +348,5 @@ nav {
 footer {
   margin-top: 48px;
   margin-bottom: 40px; }
-
-.list {
-  --sb-track-color: #232E33;
-  --sb-thumb-color: #6BAF8D;
-  --sb-size: 11px;
-  position: relative;
-  overflow: hidden;
-  padding-right: var(--sb-size); }
-  .list .list-inner {
-    height: 100%;
-    overflow-y: auto;
-    width: calc(100% + var(--sb-size)); }
-    .list .list-inner::-webkit-scrollbar {
-      width: var(--sb-size); }
-    .list .list-inner::-webkit-scrollbar-track {
-      background: var(--sb-track-color);
-      border-radius: 1px; }
-    .list .list-inner::-webkit-scrollbar-thumb {
-      background: var(--sb-thumb-color);
-      border-radius: 1px; }
 
 /*# sourceMappingURL=app.css.map */

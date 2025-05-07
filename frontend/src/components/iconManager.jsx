@@ -20,7 +20,7 @@ export default function Icon({ name, ...props }) {
     case "swap":
       return (
         <svg
-        className={props.className}
+          className={props.className}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -40,6 +40,26 @@ export default function Icon({ name, ...props }) {
             stroke-width="3"
             stroke-linecap="square"
             stroke-linejoin="round"
+          />
+        </svg>
+      );
+    case "search":
+      return (
+        <svg
+          className={props.className}
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M7.33333 2.66667L4 6V11.3333L7.33333 14.6667H5.33333L2.66667 12V5.33333L5.33333 2.66667H7.33333Z"
+            fill="#2040ED"
+          />
+          <path
+            d="M16.6667 13.724L15.6667 14.724L14.276 13.3333L15.3333 12.276V5.05733L12.276 2H5.05733L2 5.05733V12.276L5.05733 15.3333H12.276L13.3333 14.276L14.724 15.6667L13.724 16.6667L19.0573 22H20.276L22 20.276V19.0573L16.6667 13.724ZM11.724 14H5.60933L3.33333 11.724V5.60933L5.60933 3.33333H11.724L14 5.60933V11.724L11.724 14ZM20.6667 19.724L19.724 20.6667H19.6093L15.6093 16.6667L16.6667 15.6093L20.6667 19.6093V19.724Z"
+            fill="white"
           />
         </svg>
       );

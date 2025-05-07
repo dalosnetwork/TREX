@@ -7,15 +7,52 @@ import Icon from "./components/iconManager";
 import dalos from "./design/assets/dalos_logotype_yatay_açıkrenkli 1.svg";
 
 function App() {
-  const [fromToken, setFromToken] = useState({ name: "ETH" });
-  const [toToken, setToToken] = useState({ name: "ETH" });
+  const [fromToken, setFromToken] = useState({
+    name: "ETH",
+    address: "",
+    img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+  });
+  const [toToken, setToToken] = useState({
+    name: "ETH",
+    address: "",
+    img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+  });
   const [amount, setAmount] = useState("");
   const tokens = [
-    { name: "ETH", address: "qweqwe", img: "idk" },
-    { name: "USDC", address: "qweqwe", img: "idk" },
-    { name: "USDT", address: "qweqwe", img: "idk" },
-    { name: "BASE", address: "qweqwe", img: "idk" },
+    {
+      name: "ETH",
+      address: "qweqwe",
+      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+    },
+    {
+      name: "USDC",
+      address: "qweqwe",
+      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+    },
+    {
+      name: "USDT",
+      address: "qweqwe",
+      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+    },
+    {
+      name: "LINK",
+      address: "qweqwe",
+      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+    },
   ];
+
+  const handleSwap = () => {
+    let token1 = fromToken;
+    setFromToken(toToken);
+    setToToken(token1);
+  };
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // filter tokens by name (case-insensitive)
+  const filteredTokens = tokens.filter((token) =>
+    token.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -90,7 +127,7 @@ function App() {
                   <div className="row">
                     <div className="col-12 mb-3">
                       <div className="row">
-                        <div className="col-6 my-auto  ">
+                        <div className="col-auto my-auto  ">
                           <div className="dropdown">
                             <button
                               className="btn btn-secondary dropdown-toggle"
@@ -98,30 +135,63 @@ function App() {
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             >
+                              <img
+                                src={fromToken.img}
+                                style={{
+                                  borderRadius: "50%",
+                                  width: "24px",
+                                  marginTop: "-5px",
+                                  marginRight:"12px"
+                                }}
+                                className="tokenLogo"
+                                alt=""
+                              />
                               {fromToken.name}
                             </button>
                             <ul className="dropdown-menu">
-                              <li className="dropdown-item">
-                                <input type="text" placeholder="Search" />
+                              <li className="dropdown-item search d-flex align-items-center">
+                                <Icon name="search" className="me-2" />
+                                <input
+                                  type="text"
+                                  placeholder="Search"
+                                  maxLength={10}
+                                  value={searchTerm}
+                                  onChange={(e) =>
+                                    setSearchTerm(e.target.value)
+                                  }
+                                  className="form-control form-control-sm"
+                                />
                               </li>
+
                               <div className="list">
-                              <div className="list-inner">
-                              {tokens.map((token, index) => (
-                                  <li
-                                    key={index}
-                                    onClick={() => setFromToken(token)}
-                                  >
-                                    <span className="dropdown-item">
-                                      {token.name}
-                                    </span>
-                                  </li>
-                              ))}
-                              </div>
+                                <div className="list-inner">
+                                  {filteredTokens.map((token, idx) => (
+                                    <li
+                                      key={idx}
+                                      onClick={() => setFromToken(token)}
+                                    >
+                                      <span className="dropdown-item d-flex align-items-center">
+                                        <img
+                                          src={token.img}
+                                          alt={token.name}
+                                          className="tokenLogo"
+                                          style={{
+                                            borderRadius: "50%",
+                                            width: "24px",
+                                            marginTop: "-5px",
+                                            marginRight:"12px"
+                                          }}
+                                        />
+                                        {token.name}
+                                      </span>
+                                    </li>
+                                  ))}
+                                </div>
                               </div>
                             </ul>
                           </div>
                         </div>
-                        <div className="col-6 my-auto d-flex justify-content-end title2">
+                        <div className="col my-auto d-flex justify-content-end title2">
                           0.01
                         </div>
                       </div>
@@ -196,7 +266,7 @@ function App() {
                     </div>
                     <div className="col-12 d-flex justify-content-center">
                       <Button1
-                        onClick={undefined}
+                        onClick={() => handleSwap()}
                         label={""}
                         className={"swap"}
                         iconName={"swap"}
@@ -208,7 +278,7 @@ function App() {
                     </div>
                     <div className="col-12 mb-3">
                       <div className="row">
-                        <div className="col-6 my-auto">
+                        <div className="col-auto my-auto">
                           <div className="dropdown">
                             <button
                               className="btn btn-secondary dropdown-toggle"
@@ -216,23 +286,63 @@ function App() {
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             >
+                              <img
+                                src={toToken.img}
+                                style={{
+                                  borderRadius: "50%",
+                                  width: "24px",
+                                  marginTop: "-5px",
+                                  marginRight:"12px"
+                                }}
+                                className="tokenLogo"
+                                alt=""
+                              />
                               {toToken.name}
                             </button>
                             <ul className="dropdown-menu">
-                              {tokens.map((token, index) => (
-                                <li
-                                  key={index}
-                                  onClick={() => setToToken(token)}
-                                >
-                                  <a className="dropdown-item" href="#">
-                                    {token.name}
-                                  </a>
-                                </li>
-                              ))}
+                              <li className="dropdown-item search d-flex align-items-center">
+                                <Icon name="search" className="me-2" />
+                                <input
+                                  type="text"
+                                  placeholder="Search"
+                                  maxLength={10}
+                                  value={searchTerm}
+                                  onChange={(e) =>
+                                    setSearchTerm(e.target.value)
+                                  }
+                                  className="form-control form-control-sm"
+                                />
+                              </li>
+
+                              <div className="list">
+                                <div className="list-inner">
+                                  {filteredTokens.map((token, idx) => (
+                                    <li
+                                      key={idx}
+                                      onClick={() => setToToken(token)}
+                                    >
+                                      <span className="dropdown-item d-flex align-items-center">
+                                        <img
+                                          src={token.img}
+                                          alt={token.name}
+                                          className="tokenLogo"
+                                          style={{
+                                            borderRadius: "50%",
+                                            width: "24px",
+                                            marginTop: "-5px",
+                                            marginRight:"12px"
+                                          }}
+                                        />
+                                        {token.name}
+                                      </span>
+                                    </li>
+                                  ))}
+                                </div>
+                              </div>
                             </ul>
                           </div>
                         </div>
-                        <div className="col-6 my-auto d-flex justify-content-end title2">
+                        <div className="col my-auto d-flex justify-content-end title2">
                           20.9159
                         </div>
                       </div>
