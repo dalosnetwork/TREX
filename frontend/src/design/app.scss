@@ -295,6 +295,7 @@ nav {
     display: flex;
     justify-content: start;
     flex-shrink: 0;
+    padding: 16px 8px 0 8px;
     color: var(--Brand_White, #fcfcfc);
     font-family: "Press Start 2P";
     font-size: 16px;
@@ -311,30 +312,57 @@ nav {
     background-color: transparent;
     border: none;
     outline: none;
+    .list{
+
+    max-height: 100px;
+    overflow-y: scroll;
+    }
+    input[type="text"] {
+      background-color: transparent;
+      width: 100%;
+      outline: none;
+      box-shadow: none;
+      border: none;
+      &:active {
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
     li {
       background-image: url("./assets/dropdown2.svg");
       border: none;
       outline: none;
       box-shadow: none;
+
+      padding: 16px 8px 0 8px !important;
       width: 153px;
       height: 45px;
       display: flex;
       justify-content: start;
       flex-shrink: 0;
       cursor: pointer;
-      span{
+      span {
         color: var(--Brand_White, #fcfcfc);
         font-family: "Press Start 2P";
+        padding: 0;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
         line-height: 2;
-        &:hover{
+        &:hover {
           background-color: transparent;
         }
       }
-      &:hover{
+      &:hover {
         background-image: url("./assets/dropdown2.svg");
+      }
+      &:active, &:focus, &:hover {
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+        border: none;
       }
     }
   }
@@ -343,4 +371,33 @@ nav {
 footer {
   margin-top: 48px;
   margin-bottom: 40px;
+}
+
+
+.list {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #6BAF8D;
+  --sb-size:      11px;
+
+  position:      relative;
+  overflow:      hidden;               // hide the inner’s scrollbar overflow
+  padding-right: var(--sb-size);      // reserve space INSIDE the box
+
+  .list-inner {
+    height:   100%;
+    overflow-y: auto;                  // real scroll here
+    width:    calc(100% + var(--sb-size)); // push scrollbar into parent’s padding
+
+    &::-webkit-scrollbar {
+      width: var(--sb-size);
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 1px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 1px;
+    }
+  }
 }

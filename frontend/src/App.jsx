@@ -104,8 +104,9 @@ function App() {
                               <li className="dropdown-item">
                                 <input type="text" placeholder="Search" />
                               </li>
+                              <div className="list">
+                              <div className="list-inner">
                               {tokens.map((token, index) => (
-                                <>
                                   <li
                                     key={index}
                                     onClick={() => setFromToken(token)}
@@ -114,8 +115,9 @@ function App() {
                                       {token.name}
                                     </span>
                                   </li>
-                                </>
                               ))}
+                              </div>
+                              </div>
                             </ul>
                           </div>
                         </div>

@@ -218,6 +218,7 @@ nav {
   display: flex;
   justify-content: start;
   flex-shrink: 0;
+  padding: 16px 8px 0 8px;
   color: var(--Brand_White, #fcfcfc);
   font-family: "Press Start 2P";
   font-size: 16px;
@@ -232,11 +233,26 @@ nav {
   background-color: transparent;
   border: none;
   outline: none; }
+  .dropdown .dropdown-menu .list {
+    max-height: 100px;
+    overflow-y: scroll; }
+  .dropdown .dropdown-menu input[type="text"] {
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+    border: none; }
+    .dropdown .dropdown-menu input[type="text"]:active {
+      background-color: transparent;
+      outline: none;
+      box-shadow: none;
+      border: none; }
   .dropdown .dropdown-menu li {
     background-image: url("./assets/dropdown2.svg");
     border: none;
     outline: none;
     box-shadow: none;
+    padding: 16px 8px 0 8px !important;
     width: 153px;
     height: 45px;
     display: flex;
@@ -246,6 +262,7 @@ nav {
     .dropdown .dropdown-menu li span {
       color: var(--Brand_White, #fcfcfc);
       font-family: "Press Start 2P";
+      padding: 0;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -254,9 +271,34 @@ nav {
         background-color: transparent; }
     .dropdown .dropdown-menu li:hover {
       background-image: url("./assets/dropdown2.svg"); }
+    .dropdown .dropdown-menu li:active, .dropdown .dropdown-menu li:focus, .dropdown .dropdown-menu li:hover {
+      background-color: transparent;
+      outline: none;
+      box-shadow: none;
+      border: none; }
 
 footer {
   margin-top: 48px;
   margin-bottom: 40px; }
+
+.list {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #6BAF8D;
+  --sb-size: 11px;
+  position: relative;
+  overflow: hidden;
+  padding-right: var(--sb-size); }
+  .list .list-inner {
+    height: 100%;
+    overflow-y: auto;
+    width: calc(100% + var(--sb-size)); }
+    .list .list-inner::-webkit-scrollbar {
+      width: var(--sb-size); }
+    .list .list-inner::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 1px; }
+    .list .list-inner::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 1px; }
 
 /*# sourceMappingURL=app.css.map */
