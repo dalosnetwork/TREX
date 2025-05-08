@@ -5,6 +5,8 @@ import Button1 from "./components/button1";
 import React from "react";
 import Icon from "./components/iconManager";
 import dalos from "./design/assets/dalos_logotype_yatay_açıkrenkli 1.svg";
+import { aggregate } from "./services/api";
+import { useViewport } from "./hooks/useViewport";
 
 function App() {
   const tokens = [
@@ -45,6 +47,21 @@ function App() {
     token.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const viewport = useViewport();
+
+  const handleFinishSwap = async () => {
+    try {
+      const data = await aggregate(fromToken.address, "1", toToken.address);
+      if (data) {
+        console.log(data);
+      } else {
+        console.log("Failed to update transaction status");
+      }
+    } catch (error) {
+      console.error("Error updating transaction status:", error);
+    }
+  };
+
   return (
     <>
       <section id="main">
@@ -52,17 +69,17 @@ function App() {
           <nav>
             <div className="container">
               <div className="row">
-                <div className="col-6 my-auto ">
+                <div className="col-auto my-auto ">
                   <img
                     className="logo me-3"
                     style={{ width: "48px" }}
                     src={logo}
                     alt=""
                   />
-                  <span>
+                  <span className="">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="160"
+                      width={viewport != "mobile" ? "160" : "100"}
                       height="31"
                       viewBox="0 0 160 31"
                       fill="none"
@@ -90,15 +107,15 @@ function App() {
                     </svg>
                   </span>
                 </div>
-                <div className="col-6 my-auto  d-flex justify-content-end">
+                <div className="col my-auto  d-flex justify-content-end">
                   <Button1
                     onClick={undefined}
-                    label={"Connect Wallet"}
+                    label={`Connect ${viewport != "mobile" ? "Wallet" : ""}`}
                     className={""}
                     iconName={undefined}
                     img={undefined}
                     imgClass={undefined}
-                    style={undefined}
+                    style={viewport != "mobile" ? {} : { width: "150px" }}
                     id={undefined}
                   />
                 </div>
@@ -132,7 +149,7 @@ function App() {
                                   borderRadius: "50%",
                                   width: "24px",
                                   marginTop: "2px",
-                                  marginRight:"12px"
+                                  marginRight: "12px",
                                 }}
                                 className="tokenLogo"
                                 alt=""
@@ -170,7 +187,7 @@ function App() {
                                             borderRadius: "50%",
                                             width: "24px",
                                             marginTop: "-5px",
-                                            marginRight:"8px"
+                                            marginRight: "8px",
                                           }}
                                         />
                                         {token.name}
@@ -255,7 +272,7 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-12 d-flex justify-content-center">
+                    <div className="col-12 mb-3 mb-md-0 d-flex justify-content-center">
                       <Button1
                         onClick={() => handleSwap()}
                         label={""}
@@ -283,7 +300,7 @@ function App() {
                                   borderRadius: "50%",
                                   width: "24px",
                                   marginTop: "2px",
-                                  marginRight:"8px"
+                                  marginRight: "8px",
                                 }}
                                 className="tokenLogo"
                                 alt=""
@@ -321,7 +338,7 @@ function App() {
                                             borderRadius: "50%",
                                             width: "24px",
                                             marginTop: "-5px",
-                                            marginRight:"12px"
+                                            marginRight: "12px",
                                           }}
                                         />
                                         {token.name}
@@ -357,7 +374,7 @@ function App() {
               </div>
               <div className="col-12 text-center mt-4">
                 <Button1
-                  onClick={undefined}
+                  onClick={() => handleFinishSwap()}
                   label={"Swap"}
                   className={""}
                   iconName={undefined}

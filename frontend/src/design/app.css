@@ -18,6 +18,9 @@
   background-size: cover;
   background-repeat: no-repeat; }
 
+@media (max-width: 768px) {
+  #main {
+    background-position: center; } }
 nav {
   position: relative;
   padding: 32px 0; }
