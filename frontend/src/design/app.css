@@ -13,7 +13,7 @@
   justify-content: space-between;
   overflow-x: hidden;
   overflow-y: visible;
-  background-image: url("./assets/bg.svg");
+  background-image: url("./assets/bg.mp4");
   background-position: left;
   background-size: cover;
   background-repeat: no-repeat; }
@@ -242,7 +242,7 @@ nav {
   display: flex;
   justify-content: start;
   flex-shrink: 0;
-  padding: 16px 8px 0 8px;
+  padding: 12px 8px 0 8px;
   color: var(--Brand_White, #fcfcfc);
   font-family: "Press Start 2P";
   font-size: 16px;

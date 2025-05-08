@@ -7,39 +7,32 @@ import Icon from "./components/iconManager";
 import dalos from "./design/assets/dalos_logotype_yatay_açıkrenkli 1.svg";
 
 function App() {
-  const [fromToken, setFromToken] = useState({
-    name: "ETH",
-    address: "",
-    img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
-  });
-  const [toToken, setToToken] = useState({
-    name: "ETH",
-    address: "",
-    img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
-  });
-  const [amount, setAmount] = useState("");
   const tokens = [
     {
       name: "ETH",
-      address: "qweqwe",
+      address: "",
       img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
     },
     {
       name: "USDC",
-      address: "qweqwe",
-      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+      address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43MuDqq54iD1ZCRL_uthAPkfwSSL-J5qI_Q&s",
     },
     {
       name: "USDT",
-      address: "qweqwe",
-      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+      address: "0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2",
+      img: "https://images.seeklogo.com/logo-png/32/1/tether-usdt-logo-png_seeklogo-323175.png",
     },
     {
       name: "LINK",
-      address: "qweqwe",
-      img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
+      address: "0x1D9328F2713E8b4EFca304093D53fcC2c068B7Cd",
+      img: "https://s2.coinmarketcap.com/static/img/coins/200x200/1975.png",
     },
   ];
+
+  const [fromToken, setFromToken] = useState(tokens[0]);
+  const [toToken, setToToken] = useState(tokens[1]);
+  const [amount, setAmount] = useState("");
 
   const handleSwap = () => {
     let token1 = fromToken;
@@ -48,8 +41,6 @@ function App() {
   };
 
   const [searchTerm, setSearchTerm] = useState("");
-
-  // filter tokens by name (case-insensitive)
   const filteredTokens = tokens.filter((token) =>
     token.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -140,7 +131,7 @@ function App() {
                                 style={{
                                   borderRadius: "50%",
                                   width: "24px",
-                                  marginTop: "-5px",
+                                  marginTop: "2px",
                                   marginRight:"12px"
                                 }}
                                 className="tokenLogo"
@@ -179,7 +170,7 @@ function App() {
                                             borderRadius: "50%",
                                             width: "24px",
                                             marginTop: "-5px",
-                                            marginRight:"12px"
+                                            marginRight:"8px"
                                           }}
                                         />
                                         {token.name}
@@ -291,8 +282,8 @@ function App() {
                                 style={{
                                   borderRadius: "50%",
                                   width: "24px",
-                                  marginTop: "-5px",
-                                  marginRight:"12px"
+                                  marginTop: "2px",
+                                  marginRight:"8px"
                                 }}
                                 className="tokenLogo"
                                 alt=""
