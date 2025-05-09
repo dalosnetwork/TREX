@@ -17,6 +17,7 @@ const Button1 = ({
   style,
   id
 }) => {
+  
   const handleMouseDown = () => {
     const src = soundFiles[Math.floor(Math.random() * soundFiles.length)];
     const audio = new Audio(src);

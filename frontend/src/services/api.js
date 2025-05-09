@@ -17,12 +17,8 @@ export const aggregate = async (token1Address, token1Amount, token2Address) => {
       },
       body: JSON.stringify(payload),
     });
-
-    if (!response.ok) {
-    }
-
     const data = await response.json();
-    console.log("Sonuç:", data);
+    return data
   } catch (error) {
     console.error("Hata:", error);
   }

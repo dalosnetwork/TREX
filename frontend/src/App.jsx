@@ -12,7 +12,7 @@ function App() {
   const tokens = [
     {
       name: "ETH",
-      address: "",
+      address: "0x4200000000000000000000000000000000000006",
       img: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
     },
     {
@@ -35,6 +35,8 @@ function App() {
   const [fromToken, setFromToken] = useState(tokens[0]);
   const [toToken, setToToken] = useState(tokens[1]);
   const [amount, setAmount] = useState("");
+  const [isRoute, setIsRoute] = useState(false);
+  const [data1, setData] = useState({});
 
   const handleSwap = () => {
     let token1 = fromToken;
@@ -53,7 +55,9 @@ function App() {
     try {
       const data = await aggregate(fromToken.address, "1", toToken.address);
       if (data) {
-        console.log(data);
+        setData(data);
+        setIsRoute(true);
+        console.log("DATA1", data1);
       } else {
         console.log("Failed to update transaction status");
       }
@@ -62,14 +66,25 @@ function App() {
     }
   };
 
+  console.log(data1);
+
   return (
     <>
       <section id="main">
+        <video
+          id="bg-video"
+          autoPlay
+          muted
+          style={{ zIndex: "-1" }}
+          loop
+          playsInline
+          src="/bg.mp4"
+        ></video>
         <div>
           <nav>
             <div className="container">
               <div className="row">
-                <div className="col-auto my-auto ">
+                <div className="col-auto my-auto pe-0">
                   <img
                     className="logo me-3"
                     style={{ width: "48px" }}
@@ -135,7 +150,7 @@ function App() {
                   <div className="row">
                     <div className="col-12 mb-3">
                       <div className="row">
-                        <div className="col-auto my-auto  ">
+                        <div className="col-auto my-auto  pe-0">
                           <div className="dropdown">
                             <button
                               className="btn btn-secondary dropdown-toggle"
@@ -148,6 +163,7 @@ function App() {
                                 style={{
                                   borderRadius: "50%",
                                   width: "24px",
+                                  height: "24px",
                                   marginTop: "2px",
                                   marginRight: "12px",
                                 }}
@@ -286,7 +302,7 @@ function App() {
                     </div>
                     <div className="col-12 mb-3">
                       <div className="row">
-                        <div className="col-auto my-auto">
+                        <div className="col-auto my-auto pe-0">
                           <div className="dropdown">
                             <button
                               className="btn btn-secondary dropdown-toggle"
@@ -299,6 +315,7 @@ function App() {
                                 style={{
                                   borderRadius: "50%",
                                   width: "24px",
+                                  height: "24px",
                                   marginTop: "2px",
                                   marginRight: "8px",
                                 }}
@@ -384,6 +401,60 @@ function App() {
                   id={undefined}
                 />
               </div>
+              {isRoute &&
+                <div className="col-12 d-flex justify-content-center">
+                  <div className="accordion" id="route">
+                    <div className="accordion-item">
+                      <h2 className="accordion-header" id="headingOne">
+                        <button
+                          className="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne"
+                          aria-expanded="true"
+                          aria-controls="collapseOne"
+                        >
+                          <div
+                            className="row w-100 d-flex justify-content-between"
+                            style={{ flexWrap: "nowrap" }}
+                          >
+                            <div className="col-auto">
+                              <Icon
+                                name={"routeDropdown"}
+                                className="dropdownIcon"
+                              />
+                            </div>
+                            <div className="col-auto text">
+                              <Icon name={"route"} className="me-2" />
+                              See Route
+                            </div>
+                            <div className="col-auto">
+                              <Icon
+                                name={"routeDropdown"}
+                                className="dropdownIcon"
+                              />
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseOne"
+                        className="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#route"
+                      >
+                        <div className="accordion-body">
+                          {Object.entries(data1).map(([address, amount], index) => (
+                            <div key={index} className="mb-2">
+                              {address}: {amount} <br />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         </div>
