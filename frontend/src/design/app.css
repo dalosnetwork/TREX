@@ -420,4 +420,12 @@ footer {
   padding-bottom: 40px;
   background: linear-gradient(180deg, rgba(0, 13, 48, 0) 0%, #000D30 100%); }
 
+@media (max-width: 375px) {
+  .title2 {
+    font-size: 16px; }
+
+  .swapWrapper {
+    width: 540px;
+    padding: 12px 16px; } }
+
 /*# sourceMappingURL=app.css.map */
